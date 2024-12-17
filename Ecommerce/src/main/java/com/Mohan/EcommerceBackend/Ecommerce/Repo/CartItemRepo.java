@@ -1,6 +1,7 @@
 package com.Mohan.EcommerceBackend.Ecommerce.Repo;
 
-import com.vasanth.EcommerceBackend.model.CartItem;
+import com.Mohan.EcommerceBackend.Ecommerce.model.CartItem;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

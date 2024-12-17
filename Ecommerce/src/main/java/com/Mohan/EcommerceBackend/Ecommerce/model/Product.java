@@ -7,8 +7,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -37,10 +35,10 @@ public class Product {
     private double discount;
     private double specialPrice;
 
-//    @ManyToOne
-//    @JoinColumn(name = "category_id")
-//    private Category category;
-//
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
 //    @OneToMany(mappedBy = "product",cascade = {CascadeType.PERSIST,CascadeType.MERGE},fetch = FetchType.EAGER)
 //    private List<CartItem> products = new ArrayList<>();
 //

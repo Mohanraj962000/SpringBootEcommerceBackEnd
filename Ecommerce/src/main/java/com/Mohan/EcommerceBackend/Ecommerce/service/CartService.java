@@ -1,19 +1,19 @@
 package com.Mohan.EcommerceBackend.Ecommerce.service;
 
 import com.Mohan.EcommerceBackend.Ecommerce.Payload.CartDTO;
-import com.vasanth.EcommerceBackend.exceptions.APIException;
-import com.vasanth.EcommerceBackend.exceptions.ResourceNotFoundException;
-import com.vasanth.EcommerceBackend.model.Cart;
-import com.vasanth.EcommerceBackend.model.CartItem;
-import com.vasanth.EcommerceBackend.model.Product;
-import com.vasanth.EcommerceBackend.model.User;
-import com.vasanth.EcommerceBackend.payload.CartDTO;
-import com.vasanth.EcommerceBackend.payload.CommonMapper;
-import com.vasanth.EcommerceBackend.payload.ProductDTO;
-import com.vasanth.EcommerceBackend.repo.CartItemRepo;
-import com.vasanth.EcommerceBackend.repo.CartRepo;
-import com.vasanth.EcommerceBackend.repo.ProductRepo;
-import com.vasanth.EcommerceBackend.repo.UserRepo;
+
+import com.Mohan.EcommerceBackend.Ecommerce.Payload.CommonMapper;
+import com.Mohan.EcommerceBackend.Ecommerce.Payload.ProductDTO;
+import com.Mohan.EcommerceBackend.Ecommerce.Repo.CartItemRepo;
+import com.Mohan.EcommerceBackend.Ecommerce.Repo.CartRepo;
+import com.Mohan.EcommerceBackend.Ecommerce.Repo.ProductRepo;
+import com.Mohan.EcommerceBackend.Ecommerce.Repo.UserRepo;
+import com.Mohan.EcommerceBackend.Ecommerce.exceptions.APIException;
+import com.Mohan.EcommerceBackend.Ecommerce.exceptions.ResourceNotFoundException;
+import com.Mohan.EcommerceBackend.Ecommerce.model.Cart;
+import com.Mohan.EcommerceBackend.Ecommerce.model.CartItem;
+import com.Mohan.EcommerceBackend.Ecommerce.model.Product;
+import com.Mohan.EcommerceBackend.Ecommerce.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +48,7 @@ public class CartService {
 
         Product product = productRepo.findById(productId)
                 .orElseThrow(() -> new ResourceNotFoundException("Product","productId",productId));
+
 
         CartItem cartItem = cartItemRepo.findCartItemByProductIAndCartId(cart.getCartId(),productId);
 

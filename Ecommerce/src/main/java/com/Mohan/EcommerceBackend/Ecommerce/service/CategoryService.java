@@ -1,13 +1,13 @@
 package com.Mohan.EcommerceBackend.Ecommerce.service;
 
-import com.vasanth.EcommerceBackend.exceptions.APIException;
-import com.vasanth.EcommerceBackend.exceptions.ResourceNotFoundException;
-import com.vasanth.EcommerceBackend.model.Category;
-import com.vasanth.EcommerceBackend.model.Product;
-import com.vasanth.EcommerceBackend.payload.CategoryDTO;
-import com.vasanth.EcommerceBackend.payload.CategoryResponse;
-import com.vasanth.EcommerceBackend.payload.CommonMapper;
-import com.vasanth.EcommerceBackend.repo.CategoryRepo;
+import com.Mohan.EcommerceBackend.Ecommerce.Payload.CategoryDTO;
+import com.Mohan.EcommerceBackend.Ecommerce.Payload.CategoryResponse;
+import com.Mohan.EcommerceBackend.Ecommerce.Payload.CommonMapper;
+import com.Mohan.EcommerceBackend.Ecommerce.Repo.CategoryRepo;
+import com.Mohan.EcommerceBackend.Ecommerce.exceptions.APIException;
+import com.Mohan.EcommerceBackend.Ecommerce.exceptions.ResourceNotFoundException;
+import com.Mohan.EcommerceBackend.Ecommerce.model.Category;
+import com.Mohan.EcommerceBackend.Ecommerce.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

@@ -1,6 +1,6 @@
 package com.Mohan.EcommerceBackend.Ecommerce.Repo;
 
-import com.vasanth.EcommerceBackend.model.Product;
+import com.Mohan.EcommerceBackend.Ecommerce.model.Product;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,7 +1,7 @@
 package com.Mohan.EcommerceBackend.Ecommerce.Repo;
 
 import com.Mohan.EcommerceBackend.Ecommerce.model.Cart;
-import com.vasanth.EcommerceBackend.model.Cart;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
