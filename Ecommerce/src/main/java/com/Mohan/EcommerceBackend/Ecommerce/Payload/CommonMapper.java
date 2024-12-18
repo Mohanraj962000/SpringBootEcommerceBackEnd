@@ -10,20 +10,24 @@ public interface CommonMapper {
 
     CommonMapper INSTANCE = Mappers.getMapper(CommonMapper.class);
 
+    ProductDTO toProductDTO(Product product);
+    Product toProductEntity(ProductDTO productDTO);
+
     CategoryDTO toCategoryDTO(Category category);
     Category toCategoryEntity(CategoryDTO categoryDTO);
 
     UserDTO toUserDTO(User user);
     User toUserEntity(UserDTO userDTO);
 
-    RoleDTO toRoleDTO(Role role);
-    Role toRoleEntity(RoleDTO roleDTO);
-
-
     CartDTO toCartDTO(Cart cart);
     Cart toCartEntity(CartDTO cartDTO);
 
-    ProductDTO toProductDTO(Product product);
-    Product toProductEntity(ProductDTO productDTO);
+    RoleDTO toRoleDTO(Role role);
+    Role toRoleEntity(RoleDTO roleDTO);
+
+    AddressDTO toAddressDTO(Address address);
+    Address toAddressEntity(AddressDTO addressDTO);
+
+
 
 }

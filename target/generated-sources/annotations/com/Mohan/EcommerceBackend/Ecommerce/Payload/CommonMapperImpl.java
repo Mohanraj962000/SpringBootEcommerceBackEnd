@@ -1,5 +1,6 @@
 package com.Mohan.EcommerceBackend.Ecommerce.Payload;
 
+import com.Mohan.EcommerceBackend.Ecommerce.model.Address;
 import com.Mohan.EcommerceBackend.Ecommerce.model.Cart;
 import com.Mohan.EcommerceBackend.Ecommerce.model.Category;
 import com.Mohan.EcommerceBackend.Ecommerce.model.Product;
@@ -11,10 +12,50 @@ import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-12-17T12:42:35+0530",
+    date = "2024-12-18T14:44:07+0530",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 22.0.2 (Oracle Corporation)"
 )
 public class CommonMapperImpl implements CommonMapper {
+
+    @Override
+    public ProductDTO toProductDTO(Product product) {
+        if ( product == null ) {
+            return null;
+        }
+
+        ProductDTO productDTO = new ProductDTO();
+
+        productDTO.setProductId( product.getProductId() );
+        productDTO.setProductName( product.getProductName() );
+        productDTO.setDescription( product.getDescription() );
+        productDTO.setImage( product.getImage() );
+        productDTO.setQuantity( product.getQuantity() );
+        productDTO.setPrice( product.getPrice() );
+        productDTO.setDiscount( product.getDiscount() );
+        productDTO.setSpecialPrice( product.getSpecialPrice() );
+
+        return productDTO;
+    }
+
+    @Override
+    public Product toProductEntity(ProductDTO productDTO) {
+        if ( productDTO == null ) {
+            return null;
+        }
+
+        Product product = new Product();
+
+        product.setProductId( productDTO.getProductId() );
+        product.setProductName( productDTO.getProductName() );
+        product.setImage( productDTO.getImage() );
+        product.setDescription( productDTO.getDescription() );
+        product.setQuantity( productDTO.getQuantity() );
+        product.setPrice( productDTO.getPrice() );
+        product.setDiscount( productDTO.getDiscount() );
+        product.setSpecialPrice( productDTO.getSpecialPrice() );
+
+        return product;
+    }
 
     @Override
     public CategoryDTO toCategoryDTO(Category category) {
@@ -83,32 +124,6 @@ public class CommonMapperImpl implements CommonMapper {
     }
 
     @Override
-    public RoleDTO toRoleDTO(Role role) {
-        if ( role == null ) {
-            return null;
-        }
-
-        RoleDTO roleDTO = new RoleDTO();
-
-        roleDTO.setRoleName( role.getRoleName() );
-
-        return roleDTO;
-    }
-
-    @Override
-    public Role toRoleEntity(RoleDTO roleDTO) {
-        if ( roleDTO == null ) {
-            return null;
-        }
-
-        Role role = new Role();
-
-        role.setRoleName( roleDTO.getRoleName() );
-
-        return role;
-    }
-
-    @Override
     public CartDTO toCartDTO(Cart cart) {
         if ( cart == null ) {
             return null;
@@ -137,43 +152,67 @@ public class CommonMapperImpl implements CommonMapper {
     }
 
     @Override
-    public ProductDTO toProductDTO(Product product) {
-        if ( product == null ) {
+    public RoleDTO toRoleDTO(Role role) {
+        if ( role == null ) {
             return null;
         }
 
-        ProductDTO productDTO = new ProductDTO();
+        RoleDTO roleDTO = new RoleDTO();
 
-        productDTO.setProductId( product.getProductId() );
-        productDTO.setProductName( product.getProductName() );
-        productDTO.setDescription( product.getDescription() );
-        productDTO.setImage( product.getImage() );
-        productDTO.setQuantity( product.getQuantity() );
-        productDTO.setPrice( product.getPrice() );
-        productDTO.setDiscount( product.getDiscount() );
-        productDTO.setSpecialPrice( product.getSpecialPrice() );
+        roleDTO.setRoleName( role.getRoleName() );
 
-        return productDTO;
+        return roleDTO;
     }
 
     @Override
-    public Product toProductEntity(ProductDTO productDTO) {
-        if ( productDTO == null ) {
+    public Role toRoleEntity(RoleDTO roleDTO) {
+        if ( roleDTO == null ) {
             return null;
         }
 
-        Product product = new Product();
+        Role role = new Role();
 
-        product.setProductId( productDTO.getProductId() );
-        product.setProductName( productDTO.getProductName() );
-        product.setImage( productDTO.getImage() );
-        product.setDescription( productDTO.getDescription() );
-        product.setQuantity( productDTO.getQuantity() );
-        product.setPrice( productDTO.getPrice() );
-        product.setDiscount( productDTO.getDiscount() );
-        product.setSpecialPrice( productDTO.getSpecialPrice() );
+        role.setRoleName( roleDTO.getRoleName() );
 
-        return product;
+        return role;
+    }
+
+    @Override
+    public AddressDTO toAddressDTO(Address address) {
+        if ( address == null ) {
+            return null;
+        }
+
+        AddressDTO addressDTO = new AddressDTO();
+
+        addressDTO.setAddressId( address.getAddressId() );
+        addressDTO.setBuildingName( address.getBuildingName() );
+        addressDTO.setCity( address.getCity() );
+        addressDTO.setCountry( address.getCountry() );
+        addressDTO.setPincode( address.getPincode() );
+        addressDTO.setState( address.getState() );
+        addressDTO.setStreet( address.getStreet() );
+
+        return addressDTO;
+    }
+
+    @Override
+    public Address toAddressEntity(AddressDTO addressDTO) {
+        if ( addressDTO == null ) {
+            return null;
+        }
+
+        Address address = new Address();
+
+        address.setAddressId( addressDTO.getAddressId() );
+        address.setBuildingName( addressDTO.getBuildingName() );
+        address.setCity( addressDTO.getCity() );
+        address.setCountry( addressDTO.getCountry() );
+        address.setPincode( addressDTO.getPincode() );
+        address.setState( addressDTO.getState() );
+        address.setStreet( addressDTO.getStreet() );
+
+        return address;
     }
 
     protected Set<RoleDTO> roleSetToRoleDTOSet(Set<Role> set) {
