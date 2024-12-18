@@ -3,16 +3,20 @@ package com.Mohan.EcommerceBackend.Ecommerce.Payload;
 import com.Mohan.EcommerceBackend.Ecommerce.model.Address;
 import com.Mohan.EcommerceBackend.Ecommerce.model.Cart;
 import com.Mohan.EcommerceBackend.Ecommerce.model.Category;
+import com.Mohan.EcommerceBackend.Ecommerce.model.Order;
+import com.Mohan.EcommerceBackend.Ecommerce.model.OrderItem;
 import com.Mohan.EcommerceBackend.Ecommerce.model.Product;
 import com.Mohan.EcommerceBackend.Ecommerce.model.Role;
 import com.Mohan.EcommerceBackend.Ecommerce.model.User;
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
+import java.util.List;
 import java.util.Set;
 import javax.annotation.processing.Generated;
 
 @Generated(
     value = "org.mapstruct.ap.MappingProcessor",
-    date = "2024-12-18T14:44:07+0530",
+    date = "2024-12-18T20:16:18+0530",
     comments = "version: 1.5.5.Final, compiler: javac, environment: Java 22.0.2 (Oracle Corporation)"
 )
 public class CommonMapperImpl implements CommonMapper {
@@ -215,6 +219,71 @@ public class CommonMapperImpl implements CommonMapper {
         return address;
     }
 
+    @Override
+    public OrderDTO toOrderDTO(Order order) {
+        if ( order == null ) {
+            return null;
+        }
+
+        OrderDTO orderDTO = new OrderDTO();
+
+        orderDTO.setOrderId( order.getOrderId() );
+        orderDTO.setEmail( order.getEmail() );
+        orderDTO.setOrderItems( orderItemListToOrderItemDTOList( order.getOrderItems() ) );
+        orderDTO.setOrderDate( order.getOrderDate() );
+        orderDTO.setTotalAmount( order.getTotalAmount() );
+        orderDTO.setOrderStatus( order.getOrderStatus() );
+
+        return orderDTO;
+    }
+
+    @Override
+    public Order toOrderEntity(OrderDTO orderDTO) {
+        if ( orderDTO == null ) {
+            return null;
+        }
+
+        Order order = new Order();
+
+        order.setOrderId( orderDTO.getOrderId() );
+        order.setEmail( orderDTO.getEmail() );
+        order.setOrderItems( orderItemDTOListToOrderItemList( orderDTO.getOrderItems() ) );
+        order.setOrderDate( orderDTO.getOrderDate() );
+        order.setTotalAmount( orderDTO.getTotalAmount() );
+        order.setOrderStatus( orderDTO.getOrderStatus() );
+
+        return order;
+    }
+
+    @Override
+    public OrderItemDTO toOrderItemDTO(OrderItem orderItem) {
+        if ( orderItem == null ) {
+            return null;
+        }
+
+        OrderItemDTO orderItemDTO = new OrderItemDTO();
+
+        orderItemDTO.setOrderItemId( orderItem.getOrderItemId() );
+        orderItemDTO.setProduct( toProductDTO( orderItem.getProduct() ) );
+        orderItemDTO.setQuantity( orderItem.getQuantity() );
+        orderItemDTO.setDiscount( orderItem.getDiscount() );
+
+        return orderItemDTO;
+    }
+
+    @Override
+    public OrderItem toOrderItemEntity(Order order) {
+        if ( order == null ) {
+            return null;
+        }
+
+        OrderItem orderItem = new OrderItem();
+
+        orderItem.setOrder( order );
+
+        return orderItem;
+    }
+
     protected Set<RoleDTO> roleSetToRoleDTOSet(Set<Role> set) {
         if ( set == null ) {
             return null;
@@ -239,5 +308,46 @@ public class CommonMapperImpl implements CommonMapper {
         }
 
         return set1;
+    }
+
+    protected List<OrderItemDTO> orderItemListToOrderItemDTOList(List<OrderItem> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<OrderItemDTO> list1 = new ArrayList<OrderItemDTO>( list.size() );
+        for ( OrderItem orderItem : list ) {
+            list1.add( toOrderItemDTO( orderItem ) );
+        }
+
+        return list1;
+    }
+
+    protected OrderItem orderItemDTOToOrderItem(OrderItemDTO orderItemDTO) {
+        if ( orderItemDTO == null ) {
+            return null;
+        }
+
+        OrderItem orderItem = new OrderItem();
+
+        orderItem.setOrderItemId( orderItemDTO.getOrderItemId() );
+        orderItem.setProduct( toProductEntity( orderItemDTO.getProduct() ) );
+        orderItem.setQuantity( orderItemDTO.getQuantity() );
+        orderItem.setDiscount( orderItemDTO.getDiscount() );
+
+        return orderItem;
+    }
+
+    protected List<OrderItem> orderItemDTOListToOrderItemList(List<OrderItemDTO> list) {
+        if ( list == null ) {
+            return null;
+        }
+
+        List<OrderItem> list1 = new ArrayList<OrderItem>( list.size() );
+        for ( OrderItemDTO orderItemDTO : list ) {
+            list1.add( orderItemDTOToOrderItem( orderItemDTO ) );
+        }
+
+        return list1;
     }
 }

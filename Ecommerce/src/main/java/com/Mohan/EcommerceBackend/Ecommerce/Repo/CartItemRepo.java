@@ -1,7 +1,6 @@
 package com.Mohan.EcommerceBackend.Ecommerce.Repo;
 
 import com.Mohan.EcommerceBackend.Ecommerce.model.CartItem;
-
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -12,7 +11,7 @@ import java.util.UUID;
 public interface CartItemRepo extends JpaRepository<CartItem, UUID> {
 
     @Query("SELECT ci FROM CartItem ci WHERE ci.cart.id = ?1 and ci.product.id = ?2")
-    CartItem findCartItemByProductIAndCartId(UUID cartId,UUID productId);
+    CartItem findCartItemByProductIAndCartId(UUID cartId, UUID productId);
 
     @Transactional
     @Modifying
