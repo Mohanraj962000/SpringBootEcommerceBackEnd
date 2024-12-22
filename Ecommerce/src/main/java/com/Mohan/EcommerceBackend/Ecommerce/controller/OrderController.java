@@ -1,4 +1,5 @@
-package com.Mohan.EcommerceBackend.Ecommerce.Controller;
+package com.Mohan.EcommerceBackend.Ecommerce.controller;
+
 
 import com.Mohan.EcommerceBackend.Ecommerce.Payload.OrderDTO;
 import com.Mohan.EcommerceBackend.Ecommerce.Payload.OrderResponse;
@@ -23,9 +24,8 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-
-     @Autowired
-     private JWTService jwtService;
+    @Autowired
+    private JWTService jwtService;
 
     @PostMapping("/public/users/cart/payment/{paymentMethod}/order")
     public ResponseEntity<OrderDTO> orderProducts(HttpServletRequest request, @PathVariable("paymentMethod") String paymentMethod){

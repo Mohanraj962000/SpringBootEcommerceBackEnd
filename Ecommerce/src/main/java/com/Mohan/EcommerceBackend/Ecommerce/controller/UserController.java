@@ -1,4 +1,5 @@
-package com.Mohan.EcommerceBackend.Ecommerce.Controller;
+package com.Mohan.EcommerceBackend.Ecommerce.controller;
+
 
 import com.Mohan.EcommerceBackend.Ecommerce.Payload.UserDTO;
 import com.Mohan.EcommerceBackend.Ecommerce.config.AppConstants;

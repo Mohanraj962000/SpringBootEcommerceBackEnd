@@ -1,5 +1,6 @@
 package com.Mohan.EcommerceBackend.Ecommerce.service;
 
+
 import com.Mohan.EcommerceBackend.Ecommerce.Payload.CommonMapper;
 import com.Mohan.EcommerceBackend.Ecommerce.Payload.ProductDTO;
 import com.Mohan.EcommerceBackend.Ecommerce.Payload.ProductResponse;
@@ -11,7 +12,6 @@ import com.Mohan.EcommerceBackend.Ecommerce.exceptions.ResourceNotFoundException
 import com.Mohan.EcommerceBackend.Ecommerce.model.Cart;
 import com.Mohan.EcommerceBackend.Ecommerce.model.Category;
 import com.Mohan.EcommerceBackend.Ecommerce.model.Product;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -37,13 +37,16 @@ public class ProductService {
     @Autowired
     private CartService cartService;
 
+    @Autowired
+    private FileService fileService;
+
     @Value("${product.image}")
     private String path;
 
     @Autowired
     private CategoryRepo categoryRepo;
 
-    public ProductDTO addProduct(UUID categoryId, @Valid Product product) {
+    public ProductDTO addProduct(UUID categoryId, Product product) {
 
         Category category = categoryRepo.findById(categoryId)
                 .orElseThrow(()->new ResourceNotFoundException("Category","categoryId",categoryId));
@@ -124,6 +127,19 @@ public class ProductService {
     }
 
 
+
+    public ProductDTO updateProductImage(UUID productId, MultipartFile image) throws IOException {
+        Product product = repo.findById(productId)
+                .orElseThrow(()->new ResourceNotFoundException("Product","productId",productId));
+
+        String filename = fileService.uploadImage(path,image);
+
+        product.setImage(filename);
+
+        Product updatedProduct = repo.save(product);
+
+        return CommonMapper.INSTANCE.toProductDTO(updatedProduct);
+    }
 
     public String deleteProduct(UUID productId) {
 

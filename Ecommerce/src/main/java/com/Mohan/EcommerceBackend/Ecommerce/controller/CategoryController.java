@@ -1,4 +1,4 @@
-package com.Mohan.EcommerceBackend.Ecommerce.Controller;
+package com.Mohan.EcommerceBackend.Ecommerce.controller;
 
 import com.Mohan.EcommerceBackend.Ecommerce.Payload.CategoryDTO;
 import com.Mohan.EcommerceBackend.Ecommerce.Payload.CategoryResponse;

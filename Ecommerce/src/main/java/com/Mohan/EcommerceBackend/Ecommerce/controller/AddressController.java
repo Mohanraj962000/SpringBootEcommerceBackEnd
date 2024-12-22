@@ -1,5 +1,4 @@
-package com.Mohan.EcommerceBackend.Ecommerce.Controller;
-
+package com.Mohan.EcommerceBackend.Ecommerce.controller;
 
 import com.Mohan.EcommerceBackend.Ecommerce.Payload.AddressDTO;
 import com.Mohan.EcommerceBackend.Ecommerce.Repo.UserRepo;
