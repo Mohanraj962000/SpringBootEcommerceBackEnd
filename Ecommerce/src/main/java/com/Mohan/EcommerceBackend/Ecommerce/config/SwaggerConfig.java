@@ -16,7 +16,7 @@ public class SwaggerConfig {
         return new OpenAPI().info(new Info().title("E-Commerce")
                 .description("Backend for E-Commerce")
                 .version("1.0")
-                .contact(new Contact().name("Vasanth Srikanth").url("https://github.com/vasanthmax").email("vasanthmaxwell325@gmail.com"))
+                .contact(new Contact().name("Mohanraj Ramanathan").url("https://github.com/Mohanraj962000").email("mohanrajramanathan@gmail.com"))
                 .license(new License().name("License").url("/"))
                 )
                 .externalDocs(new ExternalDocumentation().description("E-Commerce Documentation")
